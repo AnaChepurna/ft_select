@@ -13,14 +13,15 @@
 CC = gcc
 CFLAG = -Wall -Wextra -Werror
 NAME = ft_select
-SRC = 	main.c
+SRC = 	main.c \
+		terminal.c
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a
 
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
-	$(CC) $(OBJ) libft/libft.a -o $(NAME)
+	$(CC) $(OBJ) libft/libft.a -o $(NAME) -ltermcap
 
 %.o: %.c
 	$(CC) -c $(CFLAG) $<
