@@ -30,6 +30,8 @@
 # define CYAN		"\x1B[36m"
 # define WHITE		"\x1B[37m"
 # define RESET		"\x1B[0m"
+# define UNDERLINE	"\e[4m"
+# define REVVID		"\033[7m"
 
 typedef struct		s_list
 {

@@ -16,8 +16,10 @@ NAME = ft_select
 SRC_DIR = src/
 FILES = main.c \
 		terminal.c \
-		signal.c 
-
+		signal.c \
+		utils.c \
+		interface.c \
+		display.c
 SRC = $(addprefix $(SRC_DIR), $(FILES))
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a

@@ -4,7 +4,7 @@ void	signal_window_handler(int signo)
 {
 	if (signo == SIGWINCH)
 	{
-		print_interface(t_interface interface);
+		manage_interface();
 		signal(SIGWINCH, signal_window_handler);
 	}
 }

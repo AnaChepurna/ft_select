@@ -11,6 +11,21 @@ int		get_maxlen(t_list *lst)
 		len = ft_strlen((char *)lst->content);
 		if (len > max)
 			max = len;
+		lst = lst->next; 
 	}
 	return (len);
+}
+
+int		is_choosen(t_interface *in, int i)
+{
+	int 	j;
+
+	j = 0;
+	while (j < in->ch_num)
+	{
+		if ((in->choosen)[j] == i)
+			return (1);
+		j++;
+	}
+	return(0);
 }
