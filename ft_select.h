@@ -14,11 +14,13 @@
 
 typedef struct		s_interface
 {
-	int		height;
-	int		width;
-	int		columnes;
-	int		lines;
-	
+	int				columnes;
+	int				lines;
+	int				width;
+	int				start;
+	int				carriage;
+	t_list			*args;
+	int				len;
 }					t_interface;
 
 /*
@@ -28,5 +30,24 @@ void	init_term(struct termios *old, struct termios *new);
 void	set_term(struct termios new);
 void	reset_term(struct termios old);
 
+/*
+**signal.c
+*/
+void	signal_window_handler(int signo);
+
+/*
+**interface.c
+*/
+void	print_interface(t_interface in);
+
+/*
+**utils.c
+*/
+int		get_maxlen(t_list *lst);
+
+/*
+**display.c
+*/
+void	display_interface(t_interface in);
 
 #endif
