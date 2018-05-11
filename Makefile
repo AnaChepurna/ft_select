@@ -13,8 +13,12 @@
 CC = gcc
 CFLAG = -Wall -Wextra -Werror
 NAME = ft_select
-SRC = 	main.c \
-		terminal.c
+SRC_DIR = src/
+FILES = main.c \
+		terminal.c \
+		signal.c 
+
+SRC = $(addprefix $(SRC_DIR), $(FILES))
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a
 
@@ -24,15 +28,15 @@ $(NAME): $(LIB) $(OBJ)
 	$(CC) $(OBJ) libft/libft.a -o $(NAME) -ltermcap
 
 %.o: %.c
-	$(CC) -c $(CFLAG) $<
+	$(CC) -c $(CFLAG) $< -o $@
 
 clean:
-	rm -rf $(OBJ)
 	make -C libft/ clean
+	rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
 	make -C libft/ fclean
+	rm -rf $(NAME)
 
 $(LIB):
 	make -C libft

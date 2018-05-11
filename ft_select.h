@@ -12,6 +12,15 @@
 # include <termcap.h>
 # include <sys/param.h>
 
+typedef struct		s_interface
+{
+	int		height;
+	int		width;
+	int		columnes;
+	int		lines;
+	
+}					t_interface;
+
 /*
 **terminal.c
 */
