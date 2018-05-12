@@ -14,6 +14,16 @@
 
 #include <stdio.h>
 
+# define INIT		0
+# define SET		1
+# define RE_SET		2
+# define GET_NEW	3
+# define GET_OLD	4
+# define UP			0
+# define DOWN		1
+# define LEFT		2
+# define RIGHT		3 
+
 typedef struct		s_interface
 {
 	int				columnes;
@@ -30,31 +40,39 @@ typedef struct		s_interface
 /*
 **terminal.c
 */
-void		init_term(struct termios *old, struct termios *new);
-void		set_term(struct termios new);
-void		reset_term(struct termios old);
+struct termios	*manage_term(int mode);
 
 /*
 **signal.c
 */
-void		signal_window_handler(int signo);
+void			start_signal_handling(void);
 
 /*
 **interface.c
 */
-t_interface	*manage_interface(void);
-void		free_interface(t_interface **in);
-void		init_interface(t_interface *in, char **argv);
+t_interface		*manage_interface(void);
+void			free_interface(t_interface **in);
+void			init_interface(t_interface *in, char **argv);
 
 /*
 **utils.c
 */
-int			get_maxlen(t_list *lst);
-int			is_choosen(t_interface *in, int i);
+int				get_maxlen(t_list *lst);
+int				is_choosen(t_interface *in, int i);
 
 /*
 **display.c
 */
-void		display_interface(t_interface *in);
+void			display_interface(t_interface *in);
+
+/*
+**control.c
+*/
+void			parse_controls(t_interface *in);
+
+/*
+**command1.c
+*/
+int				command_carriage(t_interface *in, int mode);
 
 #endif

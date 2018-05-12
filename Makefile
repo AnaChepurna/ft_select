@@ -19,7 +19,9 @@ FILES = main.c \
 		signal.c \
 		utils.c \
 		interface.c \
-		display.c
+		display.c \
+		control.c \
+		command1.c
 SRC = $(addprefix $(SRC_DIR), $(FILES))
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a

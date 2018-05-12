@@ -13,7 +13,7 @@ int		get_maxlen(t_list *lst)
 			max = len;
 		lst = lst->next; 
 	}
-	return (len);
+	return (max);
 }
 
 int		is_choosen(t_interface *in, int i)
