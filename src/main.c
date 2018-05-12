@@ -32,8 +32,10 @@ int 	main(int argc, char **argv)
 	// 	//ft_putstr(tgoto(tgetstr("cm", NULL), 2, 2));
 	// 	//ft_putstr(tgetstr("cm", NULL));
 	// }
-	char b;
-	read(0, &b, 1);
+	char b[5];
+	read(0, b, 1);
+	ft_putstr(b);
+	read(0, b, 1);
 	manage_term(RE_SET);
 	//ft_putstr(UNDERLINE REVVID "love" RESET " love");
 	return 0;

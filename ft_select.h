@@ -21,8 +21,8 @@
 # define GET_OLD	4
 # define UP			0
 # define DOWN		1
-# define LEFT		2
-# define RIGHT		3 
+# define FORWARD	2
+# define BACK		3 
 
 typedef struct		s_interface
 {
