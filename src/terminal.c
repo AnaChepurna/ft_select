@@ -13,7 +13,7 @@ static void	set_term(struct termios new)
 	tgetent(NULL, getenv("TERM"));
 	ft_putstr(tgetstr("ti", NULL));
 	ft_putstr(tgetstr("vi", NULL));
-	tcsetattr(1, TCSANOW, &new);
+	tcsetattr(2, TCSANOW, &new);
 }
 
 static void	reset_term(struct termios old)

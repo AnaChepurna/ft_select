@@ -18,13 +18,19 @@ static int		parse_exit(char *key)
 	if (ft_strequ(key, ""))
 	{
 		manage_term(RE_SET);
-		ioctl(STDERR_FILENO, TIOCSTI, "\x1A");
 		exit(0);
 	}
 	return (0);
 }	
 
-// static int		
+static int		parse_commands(char *key, t_interface *in)
+{
+	if (ft_strequ(key, " "))
+		return (manage_choice(in));
+	if (ft_strequ(key, "\n"))
+		return (make_return(in));
+	return (0);
+}		
 
 // static int		
 
@@ -38,6 +44,7 @@ void			parse_controls(t_interface *in)
 		read(0, &key, 4);
 		parse_arrows(key, in);
 		parse_exit(key);
+		parse_commands(key, in);
 		manage_interface();
 	}
 

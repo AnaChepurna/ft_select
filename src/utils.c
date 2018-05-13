@@ -21,7 +21,7 @@ int		is_choosen(t_interface *in, int i)
 	int 	j;
 
 	j = 0;
-	while (j < in->ch_num)
+	while (j < in->ch_num && in->choosen)
 	{
 		if ((in->choosen)[j] == i)
 			return (1);

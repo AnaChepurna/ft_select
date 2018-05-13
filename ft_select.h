@@ -71,8 +71,10 @@ void			display_interface(t_interface *in);
 void			parse_controls(t_interface *in);
 
 /*
-**command1.c
+**command.c
 */
 int				command_carriage(t_interface *in, int mode);
+int				manage_choice(t_interface *in);
+int				make_return(t_interface *in);
 
 #endif
