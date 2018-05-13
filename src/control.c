@@ -13,18 +13,13 @@ static int		parse_arrows(char *key, t_interface *in)
 	return (0);
 }
 
-static int		parse_exit(char *key)
+static int		parse_commands(char *key, t_interface *in)
 {
 	if (ft_strequ(key, ""))
 	{
-		manage_term(RE_SET);
+		clear();
 		exit(0);
 	}
-	return (0);
-}	
-
-static int		parse_commands(char *key, t_interface *in)
-{
 	if (ft_strequ(key, " "))
 		return (manage_choice(in));
 	if (ft_strequ(key, "\n"))
@@ -38,14 +33,13 @@ void			parse_controls(t_interface *in)
 {
 	char key[5];
 
-	while (1)
+	while (42)
 	{
 		ft_memset(key, '\0', 5);
 		read(0, &key, 4);
 		parse_arrows(key, in);
-		parse_exit(key);
 		parse_commands(key, in);
-		manage_interface();
+		manage_interface(FRESH, NULL);
 	}
 
 }

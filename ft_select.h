@@ -22,7 +22,9 @@
 # define UP			0
 # define DOWN		1
 # define FORWARD	2
-# define BACK		3 
+# define BACK		3
+# define FRESH		1
+# define FREE		2
 
 typedef struct		s_interface
 {
@@ -38,6 +40,11 @@ typedef struct		s_interface
 }					t_interface;
 
 /*
+**main.c
+*/
+void			clear(void);
+
+/*
 **terminal.c
 */
 struct termios	*manage_term(int mode);
@@ -50,7 +57,7 @@ void			start_signal_handling(void);
 /*
 **interface.c
 */
-t_interface		*manage_interface(void);
+t_interface		*manage_interface(int mode, char **argv);
 void			free_interface(t_interface **in);
 void			init_interface(t_interface *in, char **argv);
 

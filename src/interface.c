@@ -15,19 +15,6 @@ static t_interface	*new_interface(void)
 	return (in);
 }
 
-void				free_interface(t_interface **in)
-{
-	ft_lstdel(&(*in)->args, &ft_memclr);
-	free((*in)->choosen);
-	free(*in);
-	in = NULL;
-}
-
-void				init_interface(t_interface *in, char **argv)
-{
-	in->args = ft_arrtolst(argv);
-}
-
 static void			make_interface(t_interface *in)
 {
 	struct winsize	w;
@@ -51,12 +38,8 @@ static void			make_interface(t_interface *in)
 		in->start = 0;
 }
 
-t_interface			*manage_interface(void)
+static void			fresh_interface(t_interface *in)
 {
-	static t_interface	*in = NULL;
-
-	if (!in)
-		in = new_interface();
 	ft_putstr_fd(tgetstr("cl", NULL), 2);
 	if (in->args)
 	{
@@ -64,6 +47,29 @@ t_interface			*manage_interface(void)
 		display_interface(in);
 	}
 	else
-		ft_putstr("nothing to display\n");
+		ft_putstr_fd("nothing to display\n", 2);
+}
+
+t_interface			*manage_interface(int mode, char **argv)
+{
+	static t_interface	*in = NULL;
+
+	if (!in)
+		in = new_interface();
+	else
+	{
+		if (mode == INIT && argv)
+			in->args = ft_arrtolst(argv);
+		else if (mode == FREE)
+		{
+			if (in->args)
+				ft_lstdel(&in->args, &ft_memclr);
+			if (in->choosen)
+				free(in->choosen);
+			free(in);
+		}
+		else if (mode == FRESH)
+			fresh_interface(in);
+	}
 	return (in);
 }

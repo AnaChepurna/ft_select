@@ -4,7 +4,7 @@ static void		signal_window_handler(int signo)
 {
 	if (signo == SIGWINCH)
 	{
-		manage_interface();
+		manage_interface(FRESH, NULL);
 		signal(SIGWINCH, signal_window_handler);
 	}
 }
@@ -24,7 +24,7 @@ static void		signal_continue_handler(int signo)
 	if (signo == SIGCONT)
 	{
 		manage_term(SET);
-		manage_interface();
+		manage_interface(FRESH, NULL);
 		start_signal_handling();
 	}
 }
@@ -33,7 +33,7 @@ static void		signal_interrupt_handler(int signo)
 {
 	if (signo == SIGINT)
 	{
-		manage_term(RE_SET);
+		clear();
 		exit(2);
 	}
 }

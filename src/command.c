@@ -87,7 +87,7 @@ int		make_return(t_interface *in)
 	char	*ret;
 
 	ret = get_ret(in);
-	manage_term(RE_SET);
+	clear();
 	ft_putstr_fd(ret, 1);
 	free(ret);
 	exit(0);
