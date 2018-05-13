@@ -2,25 +2,27 @@
 
 static void	init_term(struct termios *old, struct termios *new)
 {
-	tcgetattr(1, old);
+	tcgetattr(2, old);
 	*new = *old;
 	(*new).c_lflag &= ~ICANON;
 	(*new).c_lflag &= ~ECHO;
+	(*new).c_cc[VMIN] = 1;
+	(*new).c_cc[VTIME] = 0;
 }
 
 static void	set_term(struct termios new)
 {
 	tgetent(NULL, getenv("TERM"));
-	ft_putstr(tgetstr("ti", NULL));
-	ft_putstr(tgetstr("vi", NULL));
+	ft_putstr_fd(tgetstr("ti", NULL), 2);
+	ft_putstr_fd(tgetstr("vi", NULL), 2);
 	tcsetattr(2, TCSANOW, &new);
 }
 
 static void	reset_term(struct termios old)
 {
-	ft_putstr(tgetstr("ve", NULL));
-	ft_putstr(tgetstr("te", NULL));
-	tcsetattr(1, TCSANOW, &old);
+	ft_putstr_fd(tgetstr("ve", NULL), 2);
+	ft_putstr_fd(tgetstr("te", NULL), 2);
+	tcsetattr(2, TCSANOW, &old);
 }
 
 struct termios	*manage_term(int mode)

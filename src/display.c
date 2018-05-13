@@ -5,15 +5,15 @@ static void		display_obj(char **args, int i, t_interface *in)
 	int		len;
 
 	if (i == in->carriage)
-		ft_putstr(UNDERLINE);
+		ft_putstr_fd(UNDERLINE, 2);
 	if (is_choosen(in, i))
-		ft_putstr(REVVID);
-	ft_putstr(args[i]);
-	ft_putstr(RESET);
+		ft_putstr_fd(REVVID, 2);
+	ft_putstr_fd(args[i], 2);
+	ft_putstr_fd(RESET, 2);
 	len = ft_strlen(args[i]);
 	while (len < in->width)
 	{
-		ft_putstr(" ");
+		ft_putstr_fd(" ", 2);
 		len++;
 	}
 }
@@ -31,7 +31,7 @@ void			display_interface(t_interface *in)
 	{
 		x = 0;
 		if (y != in->start)
-			ft_putstr("\n");
+			ft_putstr_fd("\n", 2);
 		while (x < in->columnes)
 		{
 			i = in->start + y + x * in->lines;

@@ -56,11 +56,8 @@ t_interface			*manage_interface(void)
 	static t_interface	*in = NULL;
 
 	if (!in)
-	{
-		printf("create interface\n");
 		in = new_interface();
-	}
-	ft_putstr(tgetstr("cl", NULL));
+	ft_putstr_fd(tgetstr("cl", NULL), 2);
 	if (in->args)
 	{
 		make_interface(in);
