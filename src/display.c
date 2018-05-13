@@ -25,13 +25,13 @@ void			display_interface(t_interface *in)
 	int		x;
 	int		y;
 
+	ft_putnbr(in->start);
 	args = ft_lsttoarr(in->args);
-	y = 0;
-	i = 0;
+	y = in->start;
 	while (y < in->lines)
 	{
 		x = 0;
-		if (y)
+		if (y != in->start)
 			ft_putstr("\n");
 		while (x < in->columnes)
 		{

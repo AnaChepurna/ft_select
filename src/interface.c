@@ -10,6 +10,7 @@ static t_interface	*new_interface(void)
 		in->choosen = NULL;
 		in->carriage = 0;
 		in->ch_num = 0;
+		in->start = 0;
 	}
 	return (in);
 }
@@ -42,7 +43,8 @@ static void			make_interface(t_interface *in)
 	{
 		while (in->carriage < in->start)
 			in->start -= in->lines;
-		while (in->carriage > in->lines * in->columnes - in->start)
+		while (!(in->carriage >= in->start &&
+			in->carriage < in->start + in->lines * in->columnes))
 			in->start += in->lines;
 	}
 	else
