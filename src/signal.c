@@ -1,6 +1,6 @@
 #include "../ft_select.h"
 
-void	signal_window_handler(int signo)
+static void		signal_window_handler(int signo)
 {
 	if (signo == SIGWINCH)
 	{
@@ -9,7 +9,7 @@ void	signal_window_handler(int signo)
 	}
 }
 
-void	signal_stop_handler(int signo)
+static void		signal_stop_handler(int signo)
 {
 	if (signo == SIGTSTP)
 	{
@@ -19,7 +19,7 @@ void	signal_stop_handler(int signo)
 	}
 }
 
-void	signal_continue_handler(int signo)
+static void		signal_continue_handler(int signo)
 {
 	if (signo == SIGCONT)
 	{
@@ -29,9 +29,19 @@ void	signal_continue_handler(int signo)
 	}
 }
 
-void	start_signal_handling(void)
+static void		signal_interrupt_handler(int signo)
+{
+	if (signo == SIGINT)
+	{
+		manage_term(RE_SET);
+		exit(2);
+	}
+}
+
+void			start_signal_handling(void)
 {
 	signal(SIGWINCH, signal_window_handler);
 	signal(SIGCONT, signal_continue_handler);
 	signal(SIGTSTP, signal_stop_handler);
+	signal(SIGINT, signal_interrupt_handler);
 }
