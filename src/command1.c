@@ -22,11 +22,9 @@ int		command_carriage(t_interface *in, int mode)
 		in->carriage -= in->lines;
 	}
 	else if (mode == FORWARD)
-	{
 		in->carriage += in->lines;
-		if (in->carriage >= in->len)
-			while (in->carriage >= in->lines)
-				in->carriage -= in->lines;
-	}
+	if (in->carriage >= in->len)
+		while (in->carriage >= in->lines)
+			in->carriage -= in->lines;
 	return (1);
 }

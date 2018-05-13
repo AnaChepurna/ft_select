@@ -25,9 +25,8 @@ void			display_interface(t_interface *in)
 	int		x;
 	int		y;
 
-	ft_putnbr(in->start);
 	args = ft_lsttoarr(in->args);
-	y = in->start;
+	y = 0;
 	while (y < in->lines)
 	{
 		x = 0;
@@ -35,7 +34,7 @@ void			display_interface(t_interface *in)
 			ft_putstr("\n");
 		while (x < in->columnes)
 		{
-			i = y + x * in->lines;
+			i = in->start + y + x * in->lines;
 			if (i < in->len)
 				display_obj(args, i, in);
 			x++;
