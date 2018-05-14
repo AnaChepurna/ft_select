@@ -12,7 +12,11 @@ static void	init_term(struct termios *old, struct termios *new)
 
 static void	set_term(struct termios new)
 {
-	tgetent(NULL, getenv("TERM"));
+	if (tgetent(NULL, getenv("TERM")) == -1)
+	{
+		ft_putstr_fd("ft_select: terminal error\n", 2);
+		exit(0);
+	}
 	ft_putstr_fd(tgetstr("ti", NULL), 2);
 	ft_putstr_fd(tgetstr("vi", NULL), 2);
 	tcsetattr(2, TCSANOW, &new);
