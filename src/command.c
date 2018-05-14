@@ -51,6 +51,7 @@ int		manage_choice(t_interface *in)
 		while (++j < in->ch_num - 1)
 			(in->choosen)[j] = buf[j];
 		(in->choosen)[j] = in->carriage;
+		command_carriage(in, DOWN);
 	}
 	free(buf);
 	return (1);
@@ -92,4 +93,16 @@ int		make_return(t_interface *in)
 	free(ret);
 	exit(0);
 	return (0);
+}
+
+int		delete_arg(t_interface *in)
+{
+	t_list	*lst;
+
+	lst = ft_lstrm(&(in->args), in->carriage);
+	ft_lstdel(&lst, &ft_memclr);
+	in->len--;
+	if (in->carriage == in->len)
+			in->carriage = 0;
+	return (1);
 }

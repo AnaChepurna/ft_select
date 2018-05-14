@@ -24,6 +24,8 @@ static int		parse_commands(char *key, t_interface *in)
 		return (manage_choice(in));
 	if (ft_strequ(key, "\n"))
 		return (make_return(in));
+	if (ft_strequ(key, "[3~") || (key[0] == 127 && key[1] == 0))
+		return (delete_arg(in));
 	return (0);
 }		
 

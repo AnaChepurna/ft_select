@@ -47,7 +47,10 @@ static void			fresh_interface(t_interface *in)
 		display_interface(in);
 	}
 	else
-		ft_putstr_fd("nothing to display\n", 2);
+	{
+		clear();
+		exit(0);
+	}
 }
 
 t_interface			*manage_interface(int mode, char **argv)

@@ -31,7 +31,7 @@ static void		signal_continue_handler(int signo)
 
 static void		signal_interrupt_handler(int signo)
 {
-	if (signo == SIGINT)
+	if (signo == SIGINT || signo == SIGQUIT || signo == SIGTERM)
 	{
 		clear();
 		exit(2);
@@ -44,4 +44,6 @@ void			start_signal_handling(void)
 	signal(SIGCONT, signal_continue_handler);
 	signal(SIGTSTP, signal_stop_handler);
 	signal(SIGINT, signal_interrupt_handler);
+	signal(SIGTERM, signal_interrupt_handler);
+	signal(SIGQUIT, signal_interrupt_handler);
 }

@@ -83,5 +83,6 @@ void			parse_controls(t_interface *in);
 int				command_carriage(t_interface *in, int mode);
 int				manage_choice(t_interface *in);
 int				make_return(t_interface *in);
+int				delete_arg(t_interface *in);
 
 #endif
