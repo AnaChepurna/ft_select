@@ -21,7 +21,8 @@ FILES = main.c \
 		interface.c \
 		display.c \
 		control.c \
-		command.c
+		command.c \
+		search.c
 SRC = $(addprefix $(SRC_DIR), $(FILES))
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a

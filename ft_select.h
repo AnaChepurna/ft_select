@@ -25,6 +25,8 @@
 # define BACK		3
 # define FRESH		1
 # define FREE		2
+# define YES		1
+# define NO			0
 
 typedef struct		s_interface
 {
@@ -84,5 +86,11 @@ int				command_carriage(t_interface *in, int mode);
 int				manage_choice(t_interface *in);
 int				make_return(t_interface *in);
 int				delete_arg(t_interface *in);
+
+/*
+**search.c
+*/
+void			manage_search(int mode, char *key,
+	t_interface *in);
 
 #endif

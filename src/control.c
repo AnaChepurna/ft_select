@@ -27,9 +27,7 @@ static int		parse_commands(char *key, t_interface *in)
 	if (ft_strequ(key, "[3~") || (key[0] == 127 && key[1] == 0))
 		return (delete_arg(in));
 	return (0);
-}		
-
-// static int		
+}			
 
 void			parse_controls(t_interface *in)
 {
@@ -39,8 +37,10 @@ void			parse_controls(t_interface *in)
 	{
 		ft_memset(key, '\0', 5);
 		read(0, &key, 4);
-		parse_arrows(key, in);
-		parse_commands(key, in);
+		if (!parse_commands(key, in) && !parse_arrows(key, in))
+			manage_search(YES, key, in);
+		else
+			manage_search(NO, NULL, NULL);
 		manage_interface(FRESH, NULL);
 	}
 
