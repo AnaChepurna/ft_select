@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   control.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: achepurn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/15 14:58:14 by achepurn          #+#    #+#             */
+/*   Updated: 2018/05/15 14:58:16 by achepurn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_select.h"
 
 static int		parse_arrows(char *key, t_interface *in)
@@ -27,7 +39,7 @@ static int		parse_commands(char *key, t_interface *in)
 	if (ft_strequ(key, "[3~") || (key[0] == 127 && key[1] == 0))
 		return (delete_arg(in));
 	return (0);
-}			
+}
 
 void			parse_controls(t_interface *in)
 {
@@ -43,5 +55,4 @@ void			parse_controls(t_interface *in)
 			manage_search(NO, NULL, NULL);
 		manage_interface(FRESH, NULL);
 	}
-
 }

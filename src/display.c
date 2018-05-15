@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: achepurn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/15 14:57:52 by achepurn          #+#    #+#             */
+/*   Updated: 2018/05/15 14:57:53 by achepurn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_select.h"
 
-void		display_color(char *str)
+static void		display_color(char *str)
 {
 	struct stat	st;
-	char	*color;
+	char		*color;
 
 	color = NULL;
 	if (!lstat(str, &st))
@@ -52,7 +64,6 @@ void			display_interface(t_interface *in)
 	int		x;
 	int		y;
 
-	//ft_putstr_fd(">>trying to display_interface", 2);
 	if (!in->columnes || (in->lines < 2 && in->len > 1))
 		ft_putstr_fd("too small window\n", 2);
 	else

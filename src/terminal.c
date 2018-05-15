@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   terminal.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: achepurn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/15 14:57:26 by achepurn          #+#    #+#             */
+/*   Updated: 2018/05/15 14:57:27 by achepurn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_select.h"
 
-static void	init_term(struct termios *old, struct termios *new)
+static void		init_term(struct termios *old, struct termios *new)
 {
 	tcgetattr(2, old);
 	*new = *old;
@@ -10,7 +22,7 @@ static void	init_term(struct termios *old, struct termios *new)
 	(*new).c_cc[VTIME] = 0;
 }
 
-static void	set_term(struct termios new)
+static void		set_term(struct termios new)
 {
 	if (tgetent(NULL, getenv("TERM")) == -1)
 	{
@@ -22,7 +34,7 @@ static void	set_term(struct termios new)
 	tcsetattr(2, TCSANOW, &new);
 }
 
-static void	reset_term(struct termios old)
+static void		reset_term(struct termios old)
 {
 	ft_putstr_fd(tgetstr("ve", NULL), 2);
 	ft_putstr_fd(tgetstr("te", NULL), 2);

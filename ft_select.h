@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_select.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: achepurn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/15 14:58:54 by achepurn          #+#    #+#             */
+/*   Updated: 2018/05/15 14:58:56 by achepurn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
 
@@ -12,8 +24,6 @@
 # include <termcap.h>
 # include <sys/param.h>
 
-#include <stdio.h>
-
 # define INIT		0
 # define SET		1
 # define RE_SET		2
@@ -24,6 +34,7 @@
 # define FORWARD	2
 # define BACK		3
 # define FRESH		1
+# define INFO		4
 # define FREE		2
 # define YES		1
 # define NO			0
@@ -31,7 +42,6 @@
 
 typedef struct		s_interface
 {
-	int				term_width;
 	int				columnes;
 	int				lines;
 	int				width;
@@ -46,53 +56,53 @@ typedef struct		s_interface
 /*
 **main.c
 */
-void			clear(void);
+void				clear(void);
 
 /*
 **terminal.c
 */
-struct termios	*manage_term(int mode);
+struct termios		*manage_term(int mode);
 
 /*
 **signal.c
 */
-void			start_signal_handling(void);
+void				start_signal_handling(void);
 
 /*
 **interface.c
 */
-t_interface		*manage_interface(int mode, char **argv);
-void			free_interface(t_interface **in);
-void			init_interface(t_interface *in, char **argv);
+t_interface			*manage_interface(int mode, char **argv);
+void				free_interface(t_interface **in);
+void				init_interface(t_interface *in, char **argv);
 
 /*
 **utils.c
 */
-int				get_maxlen(t_list *lst);
-int				is_choosen(t_interface *in, int i);
+int					get_maxlen(t_list *lst);
+int					is_choosen(t_interface *in, int i);
 
 /*
 **display.c
 */
-void			display_interface(t_interface *in);
+void				display_interface(t_interface *in);
 
 /*
 **control.c
 */
-void			parse_controls(t_interface *in);
+void				parse_controls(t_interface *in);
 
 /*
 **command.c
 */
-int				command_carriage(t_interface *in, int mode);
-int				manage_choice(t_interface *in);
-int				make_return(t_interface *in);
-int				delete_arg(t_interface *in);
+int					command_carriage(t_interface *in, int mode);
+int					manage_choice(t_interface *in);
+int					make_return(t_interface *in);
+int					delete_arg(t_interface *in);
 
 /*
 **search.c
 */
-void			manage_search(int mode, char *key,
+void				manage_search(int mode, char *key,
 	t_interface *in);
 
 #endif

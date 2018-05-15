@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: achepurn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/15 14:56:15 by achepurn          #+#    #+#             */
+/*   Updated: 2018/05/15 14:56:17 by achepurn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_select.h"
 
 int		command_carriage(t_interface *in, int mode)
@@ -103,6 +115,6 @@ int		delete_arg(t_interface *in)
 	ft_lstdel(&lst, &ft_memclr);
 	in->len--;
 	if (in->carriage == in->len)
-			in->carriage = 0;
+		in->carriage = 0;
 	return (1);
 }
