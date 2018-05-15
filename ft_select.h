@@ -27,9 +27,11 @@
 # define FREE		2
 # define YES		1
 # define NO			0
+# define ON_YELLOW	"\033[43m"
 
 typedef struct		s_interface
 {
+	int				term_width;
 	int				columnes;
 	int				lines;
 	int				width;

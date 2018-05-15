@@ -52,6 +52,7 @@ void			display_interface(t_interface *in)
 	int		x;
 	int		y;
 
+	//ft_putstr_fd(">>trying to display_interface", 2);
 	if (!in->columnes || (in->lines < 2 && in->len > 1))
 		ft_putstr_fd("too small window\n", 2);
 	else
