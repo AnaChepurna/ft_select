@@ -113,6 +113,9 @@ int		delete_arg(t_interface *in)
 
 	lst = ft_lstrm(&(in->args), in->carriage);
 	ft_lstdel(&lst, &ft_memclr);
+	if (is_choosen(in, in->carriage))
+		manage_choice(in);
+	change_greater(in, in->carriage);
 	in->len--;
 	if (in->carriage == in->len)
 		in->carriage = 0;

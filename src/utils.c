@@ -41,3 +41,16 @@ int		is_choosen(t_interface *in, int i)
 	}
 	return (0);
 }
+
+void	change_greater(t_interface *in, int i)
+{
+	int	j;
+
+	j = 0;
+	while (j < in->ch_num && in->choosen)
+	{
+		if ((in->choosen)[j] > i)
+			(in->choosen)[j]--;
+		j++;
+	}
+}

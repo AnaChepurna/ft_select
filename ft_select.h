@@ -6,9 +6,12 @@
 /*   By: achepurn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 14:58:54 by achepurn          #+#    #+#             */
-/*   Updated: 2018/05/15 14:58:56 by achepurn         ###   ########.fr       */
+/*   Updated: 2018/05/16 13:52:47 by achepurn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+
 
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
@@ -80,6 +83,7 @@ void				init_interface(t_interface *in, char **argv);
 */
 int					get_maxlen(t_list *lst);
 int					is_choosen(t_interface *in, int i);
+void				change_greater(t_interface *in, int i);
 
 /*
 **display.c

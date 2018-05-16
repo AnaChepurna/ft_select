@@ -6,7 +6,7 @@
 #    By: achepurn <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 21:48:41 by achepurn          #+#    #+#              #
-#    Updated: 2018/03/21 21:48:44 by achepurn         ###   ########.fr        #
+#    Updated: 2018/05/16 13:52:24 by achepurn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,14 @@ FILES = main.c \
 SRC = $(addprefix $(SRC_DIR), $(FILES))
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a
+HEADER = ft_select.h
 
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
 	$(CC) $(OBJ) libft/libft.a -o $(NAME) -ltermcap
 
-%.o: %.c
+%.o: %.c $(HEADER)
 	$(CC) -c $(CFLAG) $< -o $@
 
 clean:
